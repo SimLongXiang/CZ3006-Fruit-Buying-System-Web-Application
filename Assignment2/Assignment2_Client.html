@@ -1,0 +1,178 @@
+<html xmlns="http://www.w3.ord/1999/xhtml">
+<head>
+<title>Fruit Buying System - Order's Page</title>
+</head>
+
+<style>
+h2 {
+	text-align:center;
+        font-family:Helvetica;
+        text-decoration:underline;
+        letter-spacing:1;
+        font-size: 160%;
+}
+
+h1 {
+	text-align:center;
+        font-family:Helvetica;
+        text-decoration:underline;
+        letter-spacing:1;
+        font-size: 200%;
+}
+
+
+p {
+	text-align:center;
+
+}
+
+table, th, td {
+    border: 1px solid black;
+    text-align:center;
+}
+
+</style>
+
+
+<script type = "text/javaScript">
+alert("                              CZ3006 - NET CENTRIC COMPUTING\n                                            ASSIGNMENT 2\n                                       FRUIT BUYING SYSTEM");
+
+function resettime(){
+
+document.getElementById("user").focus();
+document.getElementById("submit").disabled = true;
+
+}
+
+function namevalidate(index){
+	var str = document.getElementById(index).value;
+	var position = str.search(/^\w\D*$/);
+	if(position != 0){
+	alert("Invalid Name ! Please enter again !");
+	document.getElementById(index).value = '';
+	document.getElementById(index).focus();
+	}
+}
+
+function numvalidate(index){
+	var str = document.getElementById(index).value;
+	var position = str.search(/^\d*$/);
+	if(position != 0){
+	alert("Invalid Input ! Please enter again !");
+	document.getElementById(index).value = 'NaN';
+	document.getElementById(index).focus();
+	}
+}
+
+
+function compute(){
+
+	if (document.getElementById("user").value == ""){
+		alert("Name must be filled out !");
+        	return false;
+	}
+	else{
+
+		for(n=1;n<4;n++){
+    			if(document.getElementById(n).value == 'NaN')
+   		 	document.getElementById(n).value = 0;
+    		}
+
+		var applecost = document.getElementById("1").value * 0.69;
+		var bananacost = document.getElementById("2").value * 0.39;
+		var orangecost = document.getElementById("3").value * 0.59;
+		var result = applecost + bananacost+ orangecost;
+
+		var paymode = "";
+		if(document.getElementById("Visa").checked) paymode = "Visa";
+		if(document.getElementById("Mastercard").checked) paymode = "Mastercard";
+		if(document.getElementById("Discover").checked) paymode = "Discover";
+
+		document.getElementById("result").value =
+
+		"Name: " + document.getElementById("user").value + "\n\n" +
+		"Cost of " + document.getElementById("1").value + " apple :" + parseFloat(applecost).toFixed(2) + "\n" +
+		"Cost of " + document.getElementById("2").value + " banana :" + parseFloat(bananacost).toFixed(2) + "\n" +
+		"Cost of " + document.getElementById("3").value + " orange :" + parseFloat(orangecost).toFixed(2) + "\n" +
+		"Total cost: " + parseFloat(result).toFixed(2) + "\n\n" +
+		"Payment mode: " + paymode;
+
+		document.getElementById("submit").disabled = false;
+	    }
+
+}
+
+</script>
+
+
+
+
+<body>
+<form action = "Assignment2_Server.php" method = "POST" onreset="return resettime()">
+
+<h1>Fruit Buying System</h1>
+
+<h2>Step 1<br></h2>
+<p>Enter your name:
+<input type="text" name ="user" size ="30" maxlength ="30" id="user" onchange = "namevalidate('user');">
+</p>
+
+<h2>Step 2<br></h2>
+<p> Enter the quantity you wish to buy:<br></p>
+<table align="center">
+  <tr>
+    <th>Fruit</th>
+    <th>Cost per qty</th>
+    <th>Quantity</th>
+  </tr>
+  <tr>
+    <td style="color:white; background-color:red">Apple</td>
+    <td>$0.69</td>
+    <td>
+	<input type="text" name ="apple" size ="10" maxlength ="10" id="1" onchange = "numvalidate('1');" value = "0">
+    </d>
+  </tr>
+<tr>
+    <td style="color:black; background-color:yellow">Banana</td>
+    <td>$0.39</td>
+    <td>
+	<input type="text" name ="banana" size ="10" maxlength ="10" id="2" onchange = "numvalidate('2');" value = "0">
+    </d>
+  </tr>
+<tr>
+    <td style="color:white; background-color:orange">Orange</td>
+    <td>$0.59</td>
+    <td>
+        <input type="text" name ="orange" size ="10" maxlength ="10" id="3" onchange = "numvalidate('3');" value = "0">
+    </d>
+  </tr>
+</table>
+<br>
+
+
+<h2>Step 3</h2>
+<p>Select one of the payment mode:<br>
+<input type = "radio" name = "payment" id = "Visa" value = "Visa" checked> Visa <br>
+<input type = "radio" name = "payment" id = "Mastercard" value = "Mastercard" > Mastercard <br>
+<input type = "radio" name = "payment" id = "Discover" value = "Discover" > Discover
+</p>
+
+
+<h2>Step 4</h2>
+<p>
+Click on "Confirm" button to check your order. <br>
+If all information is correct, click on the "Submit" button. <br>
+If you wish to re-enter, click on the "Reset" button.
+</p>
+
+<p>
+<textarea id="result" rows="8" cols="40" onfocus = "this.blur();">
+</textarea>
+<br>
+<input type="reset" value = "Reset">
+<input type="button" value ="Confirm" onclick = "return compute();">
+<input type="submit" value ="Submit" id="submit" disabled>
+</p>
+</form>
+</body>
+</html>
