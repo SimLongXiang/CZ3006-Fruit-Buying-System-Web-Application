@@ -1,4 +1,6 @@
-# CZ3006-Net-Centric-A2
+# CZ3006-Fruit-Buying-System-Web-Application
+## [Full Report Available here.](https://github.com/SimLongXiang/CZ3006-Fruit-Buying-System-Web-Application/blob/master/assignment2NetCentric.docx)
+
 This assignment aims to enhance students' understanding of Web client-side programming techniques using JavaScript and Web server-side programming techniques using PHP.
 
 ## Feature of Client Application
@@ -15,6 +17,7 @@ numbers of bananas (39 cents each)
 5. A collection of three radio buttons that are labeled as Visa, MasterCard and Discover. This is for the user to input his payment method.
 6. A Submit button. On completing the form, the user clicks this button to submit his order to the web server.
 
+![alttext](https://github.com/SimLongXiang/CZ3006-Fruit-Buying-System-Web-Application/blob/master/Assignment2/n11.JPG)
 
 ## Feature of Server Application
 1. Receives the user’s order when the Submit button on the above HTML document is clicked. On receiving the order, the server-side PHP program computes the total cost of the user’s order and returns an HTML document to the user as a receipt. 
@@ -25,6 +28,7 @@ Total number of apples: 12
 Total number of oranges: 23
 Total number of bananas: 35
 ```
+![alttext](https://github.com/SimLongXiang/CZ3006-Fruit-Buying-System-Web-Application/blob/master/Assignment2/n12.JPG)
 
 ## Author
 Sim Long Siang
